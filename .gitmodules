@@ -1,0 +1,24 @@
+[submodule "danctnix/waydroid"]
+	path = danctnix/waydroid
+	url = https://aur.archlinux.org/waydroid.git
+[submodule "danctnix/libglibutil"]
+	path = danctnix/libglibutil
+	url = https://aur.archlinux.org/libglibutil.git
+[submodule "danctnix/libgbinder"]
+	path = danctnix/libgbinder
+	url = https://aur.archlinux.org/libgbinder.git
+[submodule "danctnix/waydroid-image"]
+	path = danctnix/waydroid-image
+	url = https://aur.archlinux.org/waydroid-image.git
+[submodule "danctnix/python-gbinder"]
+	path = danctnix/python-gbinder
+	url = https://aur.archlinux.org/python-gbinder.git
+[submodule "sxmo/wvkbd"]
+	path = sxmo/wvkbd
+	url = https://aur.archlinux.org/wvkbd.git
+[submodule "sxmo/pnc"]
+	path = sxmo/pnc
+	url = https://aur.archlinux.org/pnc.git
+[submodule "sxmo/lisgd"]
+	path = sxmo/lisgd
+	url = https://aur.archlinux.org/lisgd.git
