@@ -1,7 +1,7 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=feedbackd
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A daemon to provide haptic, led and audio feedback triggered by application events"
 url="https://source.puri.sm/Librem5/feedbackd"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -37,6 +37,6 @@ package() {
     -exec cp {} ${pkgdir}/usr/share/feedbackd/themes \;
 }
 
-md5sums=('acbda6c5a7d74fa8c70e36cb3614a56b'
+md5sums=('3eaf932c6b14351ffa80110d22c964cf'
          '63e56a4b2089ff59ea9cd4eaefbb7578'
          '44215bf5d7527f249e282408cf1d40db')
