@@ -1,0 +1,22 @@
+pkgbase = livi
+	pkgdesc = GTK4 video player using GStreamer as backend
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/guidog/livi
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = xorg-server-xvfb
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = python-packaging
+	depends = gstreamer
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gtk4
+	depends = libadwaita
+	source = https://gitlab.gnome.org/guidog/livi/-/archive/v0.3.1/livi-v0.3.1.tar.gz
+	md5sums = 6f6a29500a0c1acd753c8f3162a11233
+
+pkgname = livi
