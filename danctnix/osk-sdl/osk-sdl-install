@@ -30,6 +30,9 @@ build() {
     add_binary /usr/bin/osk-sdl
     add_file /etc/osk.conf
 
+    # SDL2 is a compat lib for SDL3
+    add_binary /usr/lib/libSDL3.so.0
+
     # add DRI drivers so we can have hw accel
     add_binary /usr/lib/dri/sun4i-drm_dri.so
 
