@@ -1,6 +1,6 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=phosh-mobile-settings
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="Phosh-specific settings app"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
     'wayland-protocols'
 )
 source=(https://sources.phosh.mobi/releases/$pkgname/$pkgname-$pkgver.tar.xz{,.asc})
-b2sums=('e928fda917346a7c69b5bed8ebf39cd6373960f28fdc242ba12074a3ea45307ed241cd08d1e8d01d90fbcb6589ea929381e6fa4e6f9279f48da10588e23bebd6'
+b2sums=('635fa29f376421674d3bb5ff8990bcae8460c32374f1ae684d3ec31bd0d2a7a2c2acd47587ad3b1f0eed9e53a2b1208f77a10a2e8e61e9ccf374a26e2c2a3089'
         'SKIP')
 validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
 
