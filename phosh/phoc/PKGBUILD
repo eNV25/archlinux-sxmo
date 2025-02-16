@@ -1,6 +1,6 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=phoc
-pkgver=0.44.1
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="wlroots based Wayland compositor for mobile phones"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -31,13 +31,14 @@ makedepends=(
 )
 checkdepends=('xorg-server-xvfb')
 source=(https://sources.phosh.mobi/releases/$pkgname/$pkgname-$pkgver.tar.xz{,.asc})
-b2sums=('49e5782aedba3aba25e1bc2647b89d1e083fcfd2c77828a8816eef538dc1967d5ef1d407a029dcf92c26ef7ee97b9d0c7198bea906f1b5344ac193e6024a9b4b'
+b2sums=('0409e8b74f18fa3f5dab942d090312bad11c1dfd6d7e4fd24f103191fab8f54b2a3b2826325fc26316ecd35d43f94832f00edbce8e93ee1d1744cd79741a9dc1'
         'SKIP')
 validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
 
 prepare() {
   cd $pkgname-$pkgver/subprojects/wlroots
   patch -p1 -i "../packagefiles/wlroots/0001-Revert-layer-shell-error-on-0-dimension-without-anch.patch"
+  patch -p1 -i "../packagefiles/wlroots/0001-seat-Don-t-forget-to-destroy-touch-points-on-touch-u.patch"
 }
 
 build() {
