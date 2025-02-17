@@ -1,0 +1,12 @@
+pkgbase = gnome-control-center-mobile
+	pkgdesc = This is a dummy package. It is no longer needed.
+	pkgver = 46.0.1
+	pkgrel = 2
+	url = https://danctnix.org
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = NONE
+	depends = gnome-control-center
+
+pkgname = gnome-control-center-mobile

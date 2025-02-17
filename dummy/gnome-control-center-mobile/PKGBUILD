@@ -1,0 +1,10 @@
+# Maintainer: Danct12 <danct12@disroot.org>
+
+pkgname=gnome-control-center-mobile
+pkgver=46.0.1
+pkgrel=2
+pkgdesc="This is a dummy package. It is no longer needed."
+url="https://danctnix.org"
+license=(NONE)
+arch=(x86_64 armv7h aarch64)
+depends=(gnome-control-center)
