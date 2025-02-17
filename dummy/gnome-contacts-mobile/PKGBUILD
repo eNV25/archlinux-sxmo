@@ -1,0 +1,10 @@
+# Maintainer: Danct12 <danct12@disroot.org>
+
+pkgname=gnome-contacts-mobile
+pkgver=45.1
+pkgrel=2
+pkgdesc="This is a dummy package. It is no longer needed."
+url="https://danctnix.org"
+arch=(x86_64 armv7h aarch64)
+license=(NONE)
+depends=(gnome-contacts)
