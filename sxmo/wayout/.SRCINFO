@@ -1,0 +1,20 @@
+pkgbase = wayout
+	pkgdesc = A desktop widget for Wayland desktops
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://git.sr.ht/~proycon/wayout
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = cairo
+	makedepends = scdoc
+	depends = wayland
+	depends = pango
+	source = wayout-0.1.5.tar.gz::https://git.sr.ht/~proycon/wayout/archive/0.1.5.tar.gz
+	sha512sums = 40f54cb5d125608fd1c5df7436093a68db1abde369846b91db5ed0e2d256aa85bf19c043a74ba293cb4572299b31f57b38bff2a0f19e94be95cf4a08a22cebbf
+
+pkgname = wayout
