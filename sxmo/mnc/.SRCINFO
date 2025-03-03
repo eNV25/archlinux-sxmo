@@ -1,0 +1,15 @@
+pkgbase = mnc
+	pkgdesc = get the time in seconds to next cron job
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://git.sr.ht/~anjan/mnc
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Unlicense
+	makedepends = go
+	makedepends = binutils
+	source = mnc-0.5.tar.gz::https://git.sr.ht/~anjan/mnc/archive/0.5.tar.gz
+	sha512sums = 30ea342103362005e047fd6c9686c7e64c817983a7ad10401dfc6cabc9da2417912884cdb686d4e590d4e0233c47c51ee9dee716af97b8ace4602580400d3464
+
+pkgname = mnc
