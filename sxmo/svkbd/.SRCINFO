@@ -1,0 +1,19 @@
+pkgbase = svkbd
+	pkgdesc = Simple virtual keyboard for X, ships with an international mobile-optimised layout
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://tools.suckless.org/x/svkbd/
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	depends = libxtst
+	depends = libxft
+	depends = libxinerama
+	source = https://dl.suckless.org/tools/svkbd-0.4.2.tar.gz
+	sha512sums = 3acefa1b90a64c456de36574159c9e7fcdf3c6a66a38b74e362bd7644526b43ee3a18dc1f3440a42f14c104e966be6c7c4f93d2a21847102322b2dd750376b71
+
+pkgname = svkbd
