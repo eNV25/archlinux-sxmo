@@ -5,7 +5,6 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
-#  - use -fPIC in host cflags for v7/v8 to fix print_options.c compile
 #  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
 #  - remove optdepends on intel-media-sdk, onevpl-intel-gpu
@@ -16,8 +15,8 @@
 #  - remove --enable-lto
 
 pkgname=ffmpeg-v4l2-request
-pkgver=6.1.1
-pkgrel=8
+pkgver=7.1
+pkgrel=6
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 armv7h aarch64)
@@ -33,6 +32,7 @@ depends=(
   fribidi
   glib2
   glibc
+  glslang
   gmp
   gnutls
   gsm
@@ -44,6 +44,8 @@ depends=(
   libbluray
   libbs2b
   libdrm
+  libdvdnav
+  libdvdread
   libgl
   libiec61883
   libjxl
@@ -83,6 +85,7 @@ depends=(
   x265
   xvidcore
   xz
+  zeromq
   zimg
   zlib
 )
@@ -91,6 +94,7 @@ makedepends=(
   avisynthplus
   clang
   frei0r-plugins
+  git
   ladspa
   mesa
   nasm
@@ -103,6 +107,7 @@ optdepends=(
   'ladspa: LADSPA filters'
 )
 provides=(
+  ffmpeg
   libavcodec.so
   libavdevice.so
   libavfilter.so
@@ -112,29 +117,48 @@ provides=(
   libswresample.so
   libswscale.so
 )
+conflicts=(ffmpeg)
 options=(
   debug
 )
-_commit=502d19c9564969538952051c2d395c714e41e567
+_tag=507a51fbe9732f0f6f12f43ce12431e8faa834b7
 source=(
-  https://github.com/Kwiboo/FFmpeg/archive/${_commit}.tar.gz
-  https://github.com/FFmpeg/FFmpeg/commit/fef22c87ada4517441701e6e61e062c9f4399c8e.patch
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
+  fix_build_with_texinfo-7.2.patch
+  ffmpeg-001-v4l2-request.patch
 )
-b2sums=('82e42a6856c87ef4e33a9bec5dc00637ebdc81fa75daa0357fb6f03e85872ac7a52b699c0eaf25723b2a208d2006b094593c4eb8af613ea1d127dd32e541da9d'
-        '76ec8ce681f1ba77753140df935634817e45da2e9015d06afa042d12186f34a140dfd4c757f03f38b76d993f01231f8093a48a2b367049ded59300fe39f3ed50'
-        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
+b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
+        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
+        '7b33e9527322604532f2b26b5c78680c54d7e50c07ff6acaddd4d17e031724ae91474f46cb034d9d02fb0cf370d6477e1d4f5b04c4dddab5e8b319f03c0fc9b9'
+        'bccf4a97a624b2603eb6fc0d4171d5802bfd56f58924015505761e9d9e54444827bda8fa5371b5c4a7b306c35ceeda71d567a63c4a8f176a6c560b2e3ba55008')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
-  cd FFmpeg-${_commit}
+  cd ffmpeg
+
+  # Fix build with texinfo-7.2
+  # See https://www.linuxquestions.org/questions/slackware-14/texinfo-7-2-looks-to-have-broken-texinfo-convert-html-4175745581/
+  # Patch taken from LSF: https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-7.1-texinfo_fix-1.patch
+  patch -Np1 -i ../fix_build_with_texinfo-7.2.patch
+
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
-  # Fix build with latest vulkan headers
-  patch -Np1 -i ../fef22c87ada4517441701e6e61e062c9f4399c8e.patch
+
+  # VAAPI HEVC encode alignment fix
+  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
+  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
+
+  patch -Np1 -i ../ffmpeg-001-v4l2-request.patch
+}
+
+pkgver() {
+  cd ffmpeg
+  git describe --tags | sed 's/^n//'
 }
 
 build() {
-  cd FFmpeg-${_commit}
-  [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
+  export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig'
+  cd ffmpeg
 
   ./configure \
     --prefix=/usr \
@@ -155,8 +179,11 @@ build() {
     --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
+    --enable-libdvdnav \
+    --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libglslang \
     --enable-libgsm \
     --enable-libharfbuzz \
     --enable-libiec61883 \
@@ -190,14 +217,14 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
+    --enable-libzmq \
     --enable-opencl \
     --enable-opengl \
     --enable-shared \
+    --enable-v4l2-request \
     --enable-vapoursynth \
     --enable-version3 \
-    --enable-vulkan $CONFIG \
-    \
-    --enable-libudev
+    --enable-vulkan $CONFIG
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
@@ -227,12 +254,11 @@ package() {
     libx265.so
     libxvidcore.so
     libzimg.so
+    libzmq.so
   )
-  provides+=(ffmpeg)
-  conflicts+=(ffmpeg)
 
-  make DESTDIR="${pkgdir}" -C FFmpeg-${_commit} install install-man
-  install -Dm 755 FFmpeg-${_commit}/tools/qt-faststart "${pkgdir}"/usr/bin/
+  make DESTDIR="${pkgdir}" -C ffmpeg install install-man
+  install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
 }
 
 # vim: ts=2 sw=2 et:
