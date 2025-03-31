@@ -1,6 +1,6 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=feedbackd
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A daemon to provide haptic, led and audio feedback triggered by application events"
 url="https://source.puri.sm/Librem5/feedbackd"
@@ -11,7 +11,7 @@ depends=('gobject-introspection' 'gsound' 'json-glib' 'libgmobile' 'libgudev')
 makedepends=('git' 'glib2-devel' 'meson' 'vala')
 checkdepends=('umockdev')
 _fbd_themes_name=feedbackd-device-themes
-_fbd_themes_ver=0.4.0
+_fbd_themes_ver=0.8.1
 source=(https://source.puri.sm/Librem5/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
         https://source.puri.sm/Librem5/${_fbd_themes_name}/-/archive/v${_fbd_themes_ver}/${_fbd_themes_name}-v${_fbd_themes_ver}.tar.gz
         fbd-sysusers.conf)
@@ -37,6 +37,6 @@ package() {
     -exec cp {} ${pkgdir}/usr/share/feedbackd/themes \;
 }
 
-md5sums=('3eaf932c6b14351ffa80110d22c964cf'
-         '63e56a4b2089ff59ea9cd4eaefbb7578'
+md5sums=('b3192a5d374dfda55588cedd792a9f04'
+         'a1770219fc94e24adc19a5c46a76e65f'
          '44215bf5d7527f249e282408cf1d40db')
