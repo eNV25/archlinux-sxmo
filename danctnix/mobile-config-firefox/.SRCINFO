@@ -1,12 +1,12 @@
 pkgbase = mobile-config-firefox
 	pkgdesc = Mobile and privacy friendly configuration for Firefox
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox
 	arch = any
 	license = MPL-2.0
 	depends = firefox
-	source = https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox/-/archive/4.5.0/mobile-config-firefox-4.5.0.tar.gz
-	sha256sums = 0584eadf359b3e3ff733a99dd579d98a674abd069e6937080ef6965c73f780d4
+	source = https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox/-/archive/4.6.0/mobile-config-firefox-4.6.0.tar.gz
+	sha256sums = 3bf2f2db0de74a0e4a5a38c22128788799ba5ad3e5deed167a4b37b13cd05795
 
 pkgname = mobile-config-firefox
