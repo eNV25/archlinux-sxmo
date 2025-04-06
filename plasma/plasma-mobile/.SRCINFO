@@ -1,6 +1,6 @@
 pkgbase = plasma-mobile
 	pkgdesc = Plasma shell for mobile devices
-	pkgver = 6.3.3
+	pkgver = 6.3.4
 	pkgrel = 1
 	url = https://community.kde.org/Plasma/Mobile
 	install = plasma-mobile.install
@@ -17,13 +17,13 @@ pkgbase = plasma-mobile
 	depends = plasma-nano
 	depends = plasma-nm
 	depends = plasma-pa
-	depends = plasma-workspace=6.3.3
+	depends = plasma-workspace=6.3.4
 	optdepends = hfd-service: Haptic feedback
 	replaces = plasma-phone-components
-	source = https://download.kde.org/stable/plasma/6.3.3/plasma-mobile-6.3.3.tar.xz
-	source = https://download.kde.org/stable/plasma/6.3.3/plasma-mobile-6.3.3.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.3.4/plasma-mobile-6.3.4.tar.xz
+	source = https://download.kde.org/stable/plasma/6.3.4/plasma-mobile-6.3.4.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
-	sha512sums = aa683921799f02ab04d0c6f95b87719caed05f354e8c4c5d88a0e88e71fa6ce62ef70eb9d9b9028666f3030644d8eb5ea56fc999826926c605c4bf39692e94fc
+	sha512sums = 153ef45a1e3e5a6961228ffae9bb42ea8ebba1e5f9ca16a40d2c8dd3d3022185898256e9d7c8211df181c6d9bf541f29b71f5b57f0649c4c96d1bf7e910533e6
 	sha512sums = SKIP
 
 pkgname = plasma-mobile
