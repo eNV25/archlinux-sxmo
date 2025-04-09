@@ -13,9 +13,9 @@
 # DANCTNIX: Enable QT_FEATURE_opengles2
 
 pkgname=qt6-base-es2
-_pkgver=6.8.2
+_pkgver=6.9.0
 pkgver=${_pkgver/-/}
-pkgrel=4
+pkgrel=1
 arch=(x86_64 armv7h aarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -54,7 +54,6 @@ depends=(brotli
          sqlite
          systemd-libs
          tslib
-         vulkan-headers
          xcb-util-cursor
          xcb-util-image
          xcb-util-keysyms
@@ -76,6 +75,7 @@ makedepends=(alsa-lib
              ninja
              postgresql
              unixodbc
+             vulkan-headers
              xmlstarlet)
 optdepends=('freetds: MS SQL driver'
             'gdk-pixbuf2: GTK platform plugin'
@@ -93,18 +93,13 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('fe2195b563f33d6de95c164e891aa01bc34f5bd63a4c34e901b1c61d2f8ea1e5'
+sha256sums=('4d6f3d6f7154aa96b479dbcb3d5487f7b02906695db78122d5bc19afcf6f741c'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
-  cd $_pkgfn
-  # Fix crashes
-  git cherry-pick -n 12d4bf1ab52748cb84894f50d437064b439e0b7d \
-                     2ef615228bba9a8eb282437bfb7472f925610e89 \
-                     a43c7e58046604796aa69974ea1c5d3e2648c755
 }
 
 build() {
