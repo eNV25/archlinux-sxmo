@@ -1,14 +1,22 @@
 # Maintainer: dni <office@dnilabs.com>
 pkgname=sxmo-surf
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Surf fork for Sxmo UI; supports externalpipe, keyword searching, non-JS by default"
 url="https://git.sr.ht/~mil/sxmo-surf"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('xorg-xprop' 'libxml2' 'dmenu' 'webkit2gtk')
 provides=('surf')
-source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~mil/sxmo-surf/archive/$pkgver.tar.gz")
+source=(
+  "$pkgname-$pkgver.tar.gz::https://git.sr.ht/~mil/sxmo-surf/archive/$pkgver.tar.gz"
+  "gcc14.patch" # https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/sxmo-surf/gcc14.patch
+)
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -p1 -i "../gcc14.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -20,4 +28,5 @@ package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
-sha512sums=('39f0265f62148cb819022699077fde64264fdc4d4586741d1b216409557a58e12fda4ea84d0ee08c035a94b1665c2684bae9cb7412ccfb16b90b958f966b9e1f')
+sha512sums=('39f0265f62148cb819022699077fde64264fdc4d4586741d1b216409557a58e12fda4ea84d0ee08c035a94b1665c2684bae9cb7412ccfb16b90b958f966b9e1f'
+            '08d402325a49ccbb5388e02cf42226ab5d497a924775fcd943c7e4f8e1177fae79cc92542e02046b5620a9afc925ef29de95d9b1ccb10fc35332211a7b850d4f')

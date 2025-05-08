@@ -1,0 +1,20 @@
+pkgbase = sxmo-surf
+	pkgdesc = Surf fork for Sxmo UI; supports externalpipe, keyword searching, non-JS by default
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = https://git.sr.ht/~mil/sxmo-surf
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = xorg-xprop
+	depends = libxml2
+	depends = dmenu
+	depends = webkit2gtk
+	provides = surf
+	source = sxmo-surf-2.0.3.tar.gz::https://git.sr.ht/~mil/sxmo-surf/archive/2.0.3.tar.gz
+	source = gcc14.patch
+	sha512sums = 39f0265f62148cb819022699077fde64264fdc4d4586741d1b216409557a58e12fda4ea84d0ee08c035a94b1665c2684bae9cb7412ccfb16b90b958f966b9e1f
+	sha512sums = 08d402325a49ccbb5388e02cf42226ab5d497a924775fcd943c7e4f8e1177fae79cc92542e02046b5620a9afc925ef29de95d9b1ccb10fc35332211a7b850d4f
+
+pkgname = sxmo-surf
