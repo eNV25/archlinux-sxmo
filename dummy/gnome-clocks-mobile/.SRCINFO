@@ -1,0 +1,12 @@
+pkgbase = gnome-clocks-mobile
+	pkgdesc = This is a dummy package. It is no longer needed.
+	pkgver = 41.0
+	pkgrel = 4
+	url = https://danctnix.org
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = NONE
+	depends = gnome-clocks
+
+pkgname = gnome-clocks-mobile

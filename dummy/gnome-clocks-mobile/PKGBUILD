@@ -1,0 +1,8 @@
+pkgname=gnome-clocks-mobile
+pkgver=41.0
+pkgrel=4
+pkgdesc="This is a dummy package. It is no longer needed."
+url="https://danctnix.org"
+license=(NONE)
+arch=(x86_64 armv7h aarch64)
+depends=(gnome-clocks)
