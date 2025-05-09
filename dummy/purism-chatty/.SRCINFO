@@ -1,0 +1,12 @@
+pkgbase = purism-chatty
+	pkgdesc = This is a dummy package. It is no longer needed.
+	pkgver = 0.8.5
+	pkgrel = 5
+	url = https://danctnix.org
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = NONE
+	depends = chatty
+
+pkgname = purism-chatty

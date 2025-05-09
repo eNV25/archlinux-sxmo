@@ -1,0 +1,8 @@
+pkgname=purism-chatty
+pkgver=0.8.5
+pkgrel=5
+pkgdesc="This is a dummy package. It is no longer needed."
+url="https://danctnix.org"
+license=(NONE)
+arch=('x86_64' 'armv7h' 'aarch64')
+depends=(chatty)
