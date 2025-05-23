@@ -1,6 +1,6 @@
 pkgbase = phosh-mobile-settings
 	pkgdesc = Phosh-specific settings app
-	pkgver = 0.46.0
+	pkgver = 0.47.0
 	pkgrel = 1
 	url = https://phosh.mobi
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = phosh-mobile-settings
 	depends = lm_sensors
 	depends = phosh
 	depends = wayland
-	source = https://sources.phosh.mobi/releases/phosh-mobile-settings/phosh-mobile-settings-0.46.0.tar.xz
-	source = https://sources.phosh.mobi/releases/phosh-mobile-settings/phosh-mobile-settings-0.46.0.tar.xz.asc
+	source = https://sources.phosh.mobi/releases/phosh-mobile-settings/phosh-mobile-settings-0.47.0.tar.xz
+	source = https://sources.phosh.mobi/releases/phosh-mobile-settings/phosh-mobile-settings-0.47.0.tar.xz.asc
 	validpgpkeys = 0DB3932762F78E592F6522AFBB5A2C77584122D3
-	b2sums = 3ff025408af29ba5bc15a9ad46e0676a31ed863908f281e15b8280b4430a03de03bccf2804b1f6d6f72a892477ea0997a06994aac2d17be8c3f6ec28e028f82f
+	b2sums = 681e3ed7537012337c0491d4b162ba88c85d6023af464ba3050e5e8dd84e47264c722a8b01621ce9869c39e4d514b3c91e2f3ee30d27620e4855963ef36451b2
 	b2sums = SKIP
 
 pkgname = phosh-mobile-settings
