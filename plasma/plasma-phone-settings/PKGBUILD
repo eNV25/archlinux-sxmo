@@ -1,16 +1,15 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 
-pkgname=plasma-phone-settings
+pkgbase=plasma-phone-settings
+pkgname=('plasma-phone-settings' 'maliit-keyboard-plasma')
 pkgver=r75.648f779
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://invent.kde.org/plasma-mobile/plasma-phone-settings"
 license=('CC0-1.0')
 pkgdesc='Configuration files for Plasma Mobile deployments'
 makedepends=('git')
-optdepends=('modemmanager: Telephony capabilities')
-replaces=('plasma-mobile-settings')
 install=$pkgname.install
 source=("plasma-phone-settings::git+https://invent.kde.org/plasma-mobile/plasma-phone-settings.git")
 sha256sums=('SKIP')
@@ -20,9 +19,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-package() {
-  cp -rv "$pkgname/etc" "$pkgdir/"
-  cp -rv "$pkgname/usr" "$pkgdir/"
+package_plasma-phone-settings() {
+  optdepends=('modemmanager: Telephony capabilities')
+  replaces=('plasma-mobile-settings')
+
+  cp -rv "$srcdir/plasma-phone-settings/etc" "$pkgdir/"
+  cp -rv "$srcdir/plasma-phone-settings/usr" "$pkgdir/"
+
+  rm -rv "$pkgdir/usr/share/maliit"
 
   # Enable Pipewire for app switcher thumbnails
   mkdir -p $pkgdir/usr/lib/systemd/user/default.target.wants
@@ -33,4 +37,12 @@ package() {
   mkdir -p $pkgdir/usr/lib/systemd/system/multi-user.target.wants
   ln -sfv /usr/lib/systemd/system/hfd-service.service \
       $pkgdir/usr/lib/systemd/system/multi-user.target.wants/hfd-service.service
+}
+
+package_maliit-keyboard-plasma() {
+  depends=('maliit-keyboard')
+
+  mkdir -p "$pkgdir/usr/share/maliit"
+  cp -rv "$srcdir/plasma-phone-settings/usr/share/maliit/keyboard2" \
+    "$pkgdir/usr/share/maliit"
 }

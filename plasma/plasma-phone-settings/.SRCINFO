@@ -1,0 +1,18 @@
+pkgbase = plasma-phone-settings
+	pkgdesc = Configuration files for Plasma Mobile deployments
+	pkgver = r75.648f779
+	pkgrel = 2
+	url = https://invent.kde.org/plasma-mobile/plasma-phone-settings
+	install = plasma-phone-settings.install
+	arch = any
+	license = CC0-1.0
+	makedepends = git
+	source = plasma-phone-settings::git+https://invent.kde.org/plasma-mobile/plasma-phone-settings.git
+	sha256sums = SKIP
+
+pkgname = plasma-phone-settings
+	optdepends = modemmanager: Telephony capabilities
+	replaces = plasma-mobile-settings
+
+pkgname = maliit-keyboard-plasma
+	depends = maliit-keyboard
