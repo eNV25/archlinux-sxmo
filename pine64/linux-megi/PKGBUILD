@@ -5,7 +5,7 @@ buildarch=8
 
 pkgbase=linux-megi
 _desc="Megous Kernel"
-pkgver=6.13.2
+pkgver=6.15.1
 pkgrel=1
 arch=('aarch64')
 url="https://codeberg.org/megi/linux"
@@ -14,14 +14,12 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc' 'python' 
 options=('!strip')
 
 # Source
-_tag="orange-pi-6.13-20250209-2341"
+_tag="7395bce85b160caf34f6834d4778a1c382208dc9"
 source=("linux-$_tag.tar.gz::https://codeberg.org/megi/linux/archive/${_tag}.tar.gz"
         'config'
         'linux.preset'
         # Arch Linux upstream patches
         'ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
-        'arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch'
-        'fuse-prevent-folio-use-after-free-in-readahead.patch'
         # PinePhone Patches
         'dts-pinephone-drop-modem-power-node.patch'
         'dts-pinephone-pro-remove-modem-node.patch'
@@ -204,12 +202,10 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-md5sums=('16a25d03947d79beb540740931b3a893'
-         '041bf08080b36354d4c22580e800913c'
+md5sums=('0654a039bc45c2cd9e7cf375498246da'
+         'a8be3747b750a4c7b013bc8f16fcfe65'
          '86d4a35722b5410e3b29fc92dae15d4b'
-         '035b138a02c2f7fbbcd60aadca44a430'
-         'a715706e62bec0517e40b9721e320829'
-         '1cbc6891bd4e70ba1d73d1dda12ec89f'
+         'bf29207a84f9d217c0bf40074f122416'
          '571aee8d8a58c719288fee4185ab1713'
          'da2ad89730c2fce222ca0e286585a868'
          '7d80f76f1647afa00de320f5866484a1'
