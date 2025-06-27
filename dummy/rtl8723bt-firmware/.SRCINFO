@@ -1,0 +1,9 @@
+pkgbase = rtl8723bt-firmware
+	pkgdesc = Firmware files for RTL8723BS/CS - dummy package
+	pkgver = 20211027.6e8e591
+	pkgrel = 3
+	url = https://xff.cz/git/linux-firmware
+	arch = any
+	license = custom
+
+pkgname = rtl8723bt-firmware
