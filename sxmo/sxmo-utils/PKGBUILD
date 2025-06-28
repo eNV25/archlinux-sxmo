@@ -1,7 +1,7 @@
 # Maintainer: Aren <aren@peacevolution.org>
 # Contributor: dni <office@dnilabs.com>
 
-pkgname=('sxmo-utils' 'sxmo-utils-sway' 'sxmo-utils-dwm')
+pkgname=('sxmo-utils' 'sxmo-utils-sway')
 pkgver=1.16.3
 pkgrel=1
 pkgdesc="Utility scripts, programs, and configs that hold the sxmo UI environment together"
@@ -20,7 +20,6 @@ sha512sums=('db923a70658862106b34ed2c81c1335e41c8857b3216fd7e64ea6e594a1feef6704
             'd327fcc2abdc25889f650d7c47a6b9cc67e85539954b45d4097ff9bffb75133244ea8b0d96339f9c3280a544395dcc9b96d59c6a9a117b7f685afe5123d377eb'
             'd705fc9611716a73c89da94bf3abc9292e9069bc994b0bd097159f4babd83d4693d5cc3e42336739ac46a8c6b4a0f39d077047202901dc5066df75e597450fa7'
             'b69a09f98f8a5cad8164cd48c5f6a78f2ce0e9818fb77ccf2a3e243cd0f2023e438022b20aad9e6b5edd90e1bb862326db79dc423630682d4c43e897090d3da1')
-
 
 prepare() {
   cd "sxmo-utils"
@@ -49,7 +48,6 @@ package_sxmo-utils() {
     'callaudiod'
     'opendoas'
     'geoclue'
-    'iio-utils'
     'inotify-tools'
     'mmsd-tng'
     'mnc' # for suspend
@@ -135,38 +133,4 @@ package_sxmo-utils-sway() {
            'xorg-xwayland')
 
   make -C "sxmo-utils" DESTDIR="$pkgdir" install-sway
-}
-
-package_sxmo-utils-dwm() {
-  pkgdesc="Packages required to use dwm as a ui for sxmo"
-  url="https://sr.ht/~mil/sxmo/"
-  arch=('any')
-  provides=('sxmo-ui')
-  replaces=('sxmo-ui-dwm-meta')
-  install=
-  depends=('autocutsel'
-           'feh'
-           'scrot'
-           'svkbd'
-           'sxiv'
-           'sxmo-dmenu'
-           'sxmo-dwm'
-           'sxmo-st'
-           'unclutter'
-           'xcalib'
-           'xclip'
-           'xdotool'
-           'xob'
-           'xorg-xdpyinfo'
-           'xorg-xinput'
-           'xorg-xprop'
-           'xorg-xrandr'
-           'xorg-xrdb'
-           'xorg-xset'
-           'xorg-xsetroot'
-           'xorg-xwininfo'
-           'xprintidle'
-           'xsel')
-
-  make -C "sxmo-utils" DESTDIR="$pkgdir" install-dwm
 }
