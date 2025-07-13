@@ -1,6 +1,6 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=phoc
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="wlroots based Wayland compositor for mobile phones"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -31,15 +31,13 @@ makedepends=(
 )
 checkdepends=('xorg-server-xvfb')
 source=(https://sources.phosh.mobi/releases/$pkgname/$pkgname-$pkgver.tar.xz{,.asc})
-b2sums=('1558858760f56bb6a693d261807beae3d30e3c6296a52e42bb73c51963e92a710b13a060a0b87e216fb09899f1ce879518a5110c7c409f43d8e00885b572b92e'
+b2sums=('8397c25208e4238e0aa8d4c79d18731fa9134ef61ddfc199f370886c01c00899030a24dae1c4717869888ee594c28752d4eb413c1418e81edcc7f049a63e7ed9'
         'SKIP')
 validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
 
 prepare() {
-  cd $pkgname-$pkgver/subprojects/wlroots
+  cd $pkgname-$pkgver/subprojects/wlroots-0.19.x
   patch -p1 -i "../packagefiles/wlroots/0001-Revert-layer-shell-error-on-0-dimension-without-anch.patch"
-  patch -p1 -i "../packagefiles/wlroots/0001-seat-Don-t-forget-to-destroy-touch-points-on-touch-u.patch"
-  patch -p1 -i "../packagefiles/wlroots/0001-xwm-Handle-NET_WM_WINDOW_OPACITY.patch"
 }
 
 build() {
@@ -61,9 +59,6 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-
-  # Install scale-to-fit helper
-  install -Dm755 "$pkgname-$pkgver"/helpers/scale-to-fit "$pkgdir"/usr/bin/scale-to-fit
 
   # Remove unnecessary files
   rm -r "$pkgdir"/usr/lib
