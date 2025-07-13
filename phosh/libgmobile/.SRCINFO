@@ -1,0 +1,25 @@
+pkgbase = libgmobile
+	pkgdesc = Functions useful in mobile related, glib based projects
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Phosh/gmobile
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	checkdepends = xorg-server-xvfb
+	makedepends = gi-docgen
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = python-docutils
+	makedepends = vala
+	depends = glib2
+	depends = json-glib
+	depends = libgirepository
+	source = https://sources.phosh.mobi/releases/gmobile/gmobile-0.4.0.tar.xz
+	source = https://sources.phosh.mobi/releases/gmobile/gmobile-0.4.0.tar.xz.asc
+	validpgpkeys = 0DB3932762F78E592F6522AFBB5A2C77584122D3
+	sha256sums = 99bf096d98f63b6aa14c5aeaf4d1c6e33e44185ae0ee3b15858c95bf22db067c
+	sha256sums = SKIP
+
+pkgname = libgmobile

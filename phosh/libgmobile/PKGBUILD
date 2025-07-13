@@ -1,0 +1,45 @@
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
+
+_pkgname=gmobile
+pkgname=lib${_pkgname}
+pkgver=0.4.0
+pkgrel=1
+pkgdesc='Functions useful in mobile related, glib based projects'
+arch=('x86_64' 'armv7h' 'aarch64')
+url='https://gitlab.gnome.org/World/Phosh/gmobile'
+license=(LGPL-2.1-or-later)
+depends=(
+  'glib2'
+  'json-glib'
+  'libgirepository'
+)
+makedepends=(
+  'gi-docgen'
+  'gobject-introspection'
+  'meson'
+  'python-docutils'
+  'vala'
+)
+checkdepends=('xorg-server-xvfb')
+source=(https://sources.phosh.mobi/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.xz{,.asc})
+sha256sums=('99bf096d98f63b6aa14c5aeaf4d1c6e33e44185ae0ee3b15858c95bf22db067c'
+            'SKIP')
+validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
+
+build() {
+  local meson_options=(
+    -D gtk_doc=true
+    -D man=true
+  )
+
+  arch-meson $_pkgname-$pkgver build "${meson_options[@]}"
+  meson compile -C build
+}
+
+check() {
+  xvfb-run meson test -C build --print-errorlogs
+}
+
+package() {
+  DESTDIR="${pkgdir}" meson install -C build
+}
