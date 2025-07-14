@@ -1,23 +1,45 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=feedbackd
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A daemon to provide haptic, led and audio feedback triggered by application events"
-url="https://source.puri.sm/Librem5/feedbackd"
+url="https://gitlab.freedesktop.org/agx/feedbackd"
 arch=('x86_64' 'armv7h' 'aarch64')
 install="$pkgname.install"
 license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
-depends=('gobject-introspection' 'gsound' 'json-glib' 'libgmobile' 'libgudev')
-makedepends=('git' 'glib2-devel' 'meson' 'vala')
+depends=(
+  'gsound'
+  'json-glib'
+  'libgirepository'
+  'libgmobile'
+  'libgudev'
+)
+makedepends=(
+  'gi-docgen'
+  'glib2-devel'
+  'gobject-introspection'
+  'meson'
+  'python-docutils'
+  'vala'
+)
 checkdepends=('umockdev')
-_fbd_themes_name=feedbackd-device-themes
-_fbd_themes_ver=0.8.1
-source=(https://source.puri.sm/Librem5/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
-        https://source.puri.sm/Librem5/${_fbd_themes_name}/-/archive/v${_fbd_themes_ver}/${_fbd_themes_name}-v${_fbd_themes_ver}.tar.gz
-        fbd-sysusers.conf)
+optdepends=('feedbackd-device-themes: Device-specific themes')
+source=(
+  https://sources.phosh.mobi/releases/$pkgname/$pkgname-$pkgver.tar.xz{,.asc}
+  fbd-sysusers.conf
+)
+sha256sums=('87b955cfc4ee951179576f6dcbf4de9c0053c8226c6190117a164768342f44fd'
+            'SKIP'
+            '4d46dbd3c6eaa762bea773331a4149bb83d29e7740b6ec501e708b3f8e4c1a22')
+validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
 
 build() {
-  arch-meson $pkgname-v${pkgver} output
+  local meson_options=(
+    --libexecdir=/usr/lib/$pkgname
+    -D gtk_doc=true
+    -D man=true
+  )
+  arch-meson $pkgname-$pkgver output "${meson_options[@]}"
   ninja -C output
 }
 
@@ -31,12 +53,4 @@ package() {
   install -D -m 0644 "$srcdir"/fbd-sysusers.conf "$pkgdir"/usr/lib/sysusers.d/feedbackd.conf
 
   sed -i 's/libexec/lib/g' "$pkgdir"/usr/lib/udev/rules.d/90-feedbackd.rules
-
-  # It would make much more sense to bundle fbd device configuration with the pkg.
-  find ${srcdir}/${_fbd_themes_name}-v${_fbd_themes_ver}/data -name \*.json \
-    -exec cp {} ${pkgdir}/usr/share/feedbackd/themes \;
 }
-
-md5sums=('b3192a5d374dfda55588cedd792a9f04'
-         'a1770219fc94e24adc19a5c46a76e65f'
-         '44215bf5d7527f249e282408cf1d40db')
