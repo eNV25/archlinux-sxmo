@@ -1,0 +1,27 @@
+# Maintainer: Danct12 <danct12@disroot.org>
+pkgname=feedbackd-device-themes
+pkgver=0.8.4
+pkgrel=1
+pkgdesc="Device-specific themes for Feedbackd"
+url="https://gitlab.freedesktop.org/agx/feedbackd-device-themes"
+arch=('any')
+license=('GPL-3.0-or-later')
+makedepends=('meson')
+checkdepends=('feedbackd' 'json-glib')
+source=(https://sources.phosh.mobi/releases/$pkgname/$pkgname-$pkgver.tar.xz{,.asc})
+sha256sums=('d9a63601589e93ca45766b752f8ebe84e553fcbb14ba0c242e6d565d33b0b84d'
+            'SKIP')
+validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
+
+build() {
+  arch-meson $pkgname-$pkgver output
+  meson compile -C output
+}
+
+check() {
+  meson test -v -C output
+}
+
+package() {
+  meson install -C output --destdir "$pkgdir"
+}
