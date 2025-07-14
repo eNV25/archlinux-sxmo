@@ -1,7 +1,7 @@
 pkgbase = danctnix-phosh-ui-meta
 	pkgdesc = Meta package for Phosh
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/dreemurrs-embedded/Pine64-Arch
 	arch = any
 	depends = danctnix-phosh-settings
@@ -14,9 +14,10 @@ pkgbase = danctnix-phosh-ui-meta
 	depends = iio-sensor-proxy
 	depends = phoc
 	depends = phosh
+	depends = phosh-osk-stevia
 	depends = sound-theme-phosh
-	depends = squeekboard
 	depends = wys
 	depends = xdg-desktop-portal-gtk
+	depends = xdg-desktop-portal-phosh
 
 pkgname = danctnix-phosh-ui-meta
