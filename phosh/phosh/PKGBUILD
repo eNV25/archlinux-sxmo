@@ -1,6 +1,6 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=phosh
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="Wayland shell for GNOME on mobile devices."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,8 +23,7 @@ depends=(
     'gnome-desktop'
     'gnome-session'
     'gnome-shell'
-    'phoc'
-    'squeekboard'
+    'phosh-osk-stevia'
     'upower'
 )
 makedepends=(
@@ -35,12 +34,12 @@ makedepends=(
     'python-packaging'
     'wayland-protocols'
 )
-checkdepends=('xorg-server-xvfb')
+checkdepends=('xmlstarlet' 'xorg-server-xvfb')
 install="$pkgname.install"
 source=(https://sources.phosh.mobi/releases/$pkgname/$pkgname-$pkgver.tar.xz{,.asc}
         'pam_phosh'
         'phosh.service')
-b2sums=('f48766e0f981e4ceda53302af9935e54db66b12be2169852473320f1e39d82d7cbd56aa38d59803b5115fbd4bcd10560020be28714441f41e93175806086cdcb'
+b2sums=('e09746ad13714599e3f5e59fa7ab1a24aad816d175c2f37edac25daab7619c3101167b31b0789c536f48f5b7d866dd2b0dbd2e904ad99f21bc3e2b4f9a35c5b2'
         'SKIP'
         'd89e16605e2e8e29834f9537bd09ef3f76f1cf6420cdd99346a760cab8c7217f86898be66c24b206b464239fc8b5277150abd19bae81af72187a435bd8c2f869'
         '5a769e4bda9c2c23cc386ac657dfb4267f130ee22644c3bf247f7373ee53afcf30d3086906e020d005e0b860742356f004cc5543bd1ed62fb82fb71d7e9b430e')
@@ -72,6 +71,4 @@ package() {
         "$pkgdir"/usr/lib/systemd/system/phosh.service
     install -Dm644 "$srcdir"/pam_phosh \
         "$pkgdir"/etc/pam.d/phosh
-    mkdir -p "$pkgdir"/usr/share/applications
-    ln -s sm.puri.Squeekboard.desktop "$pkgdir"/usr/share/applications/sm.puri.OSK0.desktop
 }
