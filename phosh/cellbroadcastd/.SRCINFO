@@ -1,0 +1,22 @@
+pkgbase = cellbroadcastd
+	pkgdesc = dbus daemon that manages cell broadcast messages
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://phosh.mobi
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later AND LGPL-2.1-or-later
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = libgirepository
+	depends = libgmobile
+	depends = modemmanager
+	source = https://sources.phosh.mobi/releases/cellbroadcastd/cbd-0.0.2.tar.xz
+	source = https://sources.phosh.mobi/releases/cellbroadcastd/cbd-0.0.2.tar.xz.asc
+	validpgpkeys = 0DB3932762F78E592F6522AFBB5A2C77584122D3
+	b2sums = 9dcd854fe72e8b76e2a4c95e69c7a43f0e096f7c0abbdf7ec217d26bbeb73dfa2bcd5dfac162735e15e676e40882a385f87c82a1b01905565d3962fe26b4bb9a
+	b2sums = SKIP
+
+pkgname = cellbroadcastd

@@ -1,0 +1,36 @@
+# Maintainer: Danct12 <danct12@disroot.org>
+pkgname=cellbroadcastd
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="dbus daemon that manages cell broadcast messages"
+arch=('x86_64' 'armv7h' 'aarch64')
+url="https://phosh.mobi"
+license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
+depends=(
+  'libgirepository'
+  'libgmobile'
+  'modemmanager'
+)
+makedepends=(
+  'glib2-devel'
+  'gobject-introspection'
+  'meson'
+)
+_tarball_name="cbd"
+source=(https://sources.phosh.mobi/releases/$pkgname/$_tarball_name-$pkgver.tar.xz{,.asc})
+b2sums=('9dcd854fe72e8b76e2a4c95e69c7a43f0e096f7c0abbdf7ec217d26bbeb73dfa2bcd5dfac162735e15e676e40882a385f87c82a1b01905565d3962fe26b4bb9a'
+        'SKIP')
+validpgpkeys=('0DB3932762F78E592F6522AFBB5A2C77584122D3')
+
+build() {
+  arch-meson $_tarball_name-$pkgver output
+  meson compile -C output
+}
+
+check() {
+  meson test -C output --print-errorlogs
+}
+
+package() {
+  meson install -C output --skip-subprojects --destdir "$pkgdir"
+}
