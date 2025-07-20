@@ -1,7 +1,7 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=feedbackd
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon to provide haptic, led and audio feedback triggered by application events"
 url="https://gitlab.freedesktop.org/agx/feedbackd"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -52,5 +52,5 @@ package() {
 
   install -D -m 0644 "$srcdir"/fbd-sysusers.conf "$pkgdir"/usr/lib/sysusers.d/feedbackd.conf
 
-  sed -i 's/libexec/lib/g' "$pkgdir"/usr/lib/udev/rules.d/90-feedbackd.rules
+  sed -i 's/libexec/lib\/feedbackd/g' "$pkgdir"/usr/lib/udev/rules.d/90-feedbackd.rules
 }

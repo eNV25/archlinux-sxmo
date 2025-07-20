@@ -1,7 +1,7 @@
 pkgbase = feedbackd
 	pkgdesc = A daemon to provide haptic, led and audio feedback triggered by application events
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/agx/feedbackd
 	install = feedbackd.install
 	arch = x86_64
