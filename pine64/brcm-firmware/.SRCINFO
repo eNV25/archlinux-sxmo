@@ -1,7 +1,7 @@
 pkgbase = brcm-firmware
-	pkgdesc = Firmware files for BCM43 chips
+	pkgdesc = WLAN/Bluetooth firmware files for BCM43 chips
 	pkgver = 20250113.0228ba8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xff.cz/git/linux-firmware
 	arch = any
 	license = custom

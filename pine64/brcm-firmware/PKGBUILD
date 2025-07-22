@@ -1,6 +1,6 @@
 pkgname=brcm-firmware
-pkgrel=1
-pkgdesc="Firmware files for BCM43 chips"
+pkgrel=2
+pkgdesc="WLAN/Bluetooth firmware files for BCM43 chips"
 makedepends=('git')
 arch=('any')
 url="https://xff.cz/git/linux-firmware"
@@ -23,11 +23,7 @@ pkgver() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/lib/firmware
-  cp -rv ${srcdir}/linux-firmware/brcm ${pkgdir}/usr/lib/firmware
-  rm -r ${pkgdir}/usr/lib/firmware/brcm/2020-02-12
-
-  cd ${pkgdir}/usr/lib/firmware/brcm
-  rm brcmfmac43362-sdio.bin brcmfmac43455-sdio.bin brcmfmac43455-sdio.clm_blob
+  mkdir -p ${pkgdir}/usr/lib/firmware/brcm
+  cp -v ${srcdir}/linux-firmware/brcm/BCM43*.hcd ${pkgdir}/usr/lib/firmware/brcm
 }
 # vim:set ts=2 sw=2 et
