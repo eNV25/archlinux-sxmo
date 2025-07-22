@@ -1,0 +1,14 @@
+pkgbase = brcm-firmware
+	pkgdesc = Firmware files for BCM43 chips
+	pkgver = 20250113.0228ba8
+	pkgrel = 1
+	url = https://xff.cz/git/linux-firmware
+	arch = any
+	license = custom
+	makedepends = git
+	depends = linux-firmware-broadcom
+	options = !strip
+	source = git+https://xff.cz/git/linux-firmware
+	md5sums = SKIP
+
+pkgname = brcm-firmware
