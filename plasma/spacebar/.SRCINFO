@@ -1,7 +1,7 @@
 pkgbase = spacebar
 	pkgdesc = SMS and messaging application for Mobile Devices running Plasma
 	pkgver = 24.05.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://community.kde.org/Plasma/Mobile
 	arch = x86_64
 	arch = armv7h
