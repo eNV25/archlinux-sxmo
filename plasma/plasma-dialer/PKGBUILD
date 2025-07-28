@@ -4,7 +4,7 @@
 
 pkgname=plasma-dialer
 pkgver=24.08.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Phone Dialer for Plasma Mobile"
 arch=('aarch64' 'x86_64')
 url="https://community.kde.org/Plasma/Mobile"
